@@ -4,8 +4,8 @@
 #wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
 #sudo dpkg -i zabbix-release_6.0-1+ubuntu20.04_all.deb
 #rm zabbix-release_6.0-1+ubuntu20.04_all.deb
-sudo apt update
-sudo apt update && sudo apt install make build-essential gcc git jq chrony wireguard zabbix-agent2 -y
+sudo apt-get update && sudo apt upgrade -y 
+sudo apt-get install make build-essential gcc git jq chrony -y
 sudo snap install go --classic 
 echo "PATH=~/go/bin:$PATH" >> ~/.profile
 source ~/.profile
