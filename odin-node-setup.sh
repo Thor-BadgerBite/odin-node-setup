@@ -1,9 +1,9 @@
 #! /bin/bash
 
 ## Install essential packages
-wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
-sudo dpkg -i zabbix-release_6.0-1+ubuntu20.04_all.deb
-rm zabbix-release_6.0-1+ubuntu20.04_all.deb
+#wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
+#sudo dpkg -i zabbix-release_6.0-1+ubuntu20.04_all.deb
+#rm zabbix-release_6.0-1+ubuntu20.04_all.deb
 sudo apt update
 sudo apt update && sudo apt install make build-essential gcc git jq chrony wireguard zabbix-agent2 -y
 sudo snap install go --classic 
@@ -56,8 +56,8 @@ export ODIN_STATESYNC_TRUST_HASH=$TRUST_HASH
 
 sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.0001loki"/' .odin/config/app.toml
 sed -i 's/pruning = "default"/pruning = "custom"/' .odin/config/app.toml 
-sed -i 's/pruning-keep-recent = "0"/pruning-keep-recent = "107"/' .odin/config/app.toml
-sed -i 's/pruning-interval = "0"/pruning-interval = "10"/' .odin/config/app.toml
+sed -i 's/pruning-keep-recent = "0"/pruning-keep-recent = "362880"/' .odin/config/app.toml
+sed -i 's/pruning-interval = "0"/pruning-interval = "100"/' .odin/config/app.toml
 
 curl https://raw.githubusercontent.com/ODIN-PROTOCOL/networks/master/mainnets/odin-mainnet-freya/genesis.json > ~/.odin/config/genesis.json
 
@@ -66,7 +66,7 @@ Description=Odin Cosmovisor Daemon
 After=network-online.target
 
 [Service]
-User=cosmovisor
+User=badgerbite
 ExecStart=/home/cosmovisor/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
